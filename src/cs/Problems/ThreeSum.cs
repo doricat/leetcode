@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 
 namespace Problems
@@ -9,17 +8,42 @@ namespace Problems
         public static IList<IList<int>> ThreeSum(int[] nums)
         {
             var result = new List<IList<int>>();
-            var list = nums.ToList();
-            for (var i = 0; i < list.Count - 2; i++)
+            nums = nums.OrderBy(x => x).ToArray();
+            for (var i = 0; i < nums.Length - 2; i++)
             {
-                for (var j = i + 1; j < list.Count - 1; j++)
+                var j = i + 1;
+                var k = nums.Length - 1;
+                while (j < k)
                 {
-                    var o = 0 - list[i] - list[j];
-                    var index = list.IndexOf(o, j + 1);
-                    if (index != - 1)
+                    if (nums[i] + nums[j] + nums[k] == 0)
                     {
-                        result.Add(new List<int> {list[i], list[j], o});
+                        result.Add(new List<int> {nums[i], nums[j], nums[k]});
+                        j++;
+                        k--;
+
+                        while (j < k && nums[j - 1] == nums[j])
+                        {
+                            j++;
+                        }
+
+                        while (j < k && nums[k] == nums[k + 1])
+                        {
+                            k--;
+                        }
                     }
+                    else if (nums[i] + nums[j] + nums[k] < 0)
+                    {
+                        j++;
+                    }
+                    else
+                    {
+                        k--;
+                    }
+                }
+
+                while (i < nums.Length - 1 && nums[i] == nums[i + 1])
+                {
+                    i++;
                 }
             }
 
