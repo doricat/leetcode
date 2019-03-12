@@ -13,7 +13,7 @@
             var left = 0;
             for (var i = 0; i < s.Length - 1; i++)
             {
-                for (var j = i + 1; j < s.Length; j++)
+                for (var j = s.Length - 1; j > i; j--)
                 {
                     if (s[i] == s[j])
                     {
