@@ -2,7 +2,7 @@ using NUnit.Framework;
 
 namespace Problems.Tests
 {
-    public class IsValidBSTTests
+    public class ValidateBinarySearchTreeTests
     {
         [Test]
         public void IsValidBSTTest1()
