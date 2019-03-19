@@ -31,6 +31,7 @@ namespace Problems
                 if (node2.next == node)
                 {
                     node2.next = node.next;
+                    break;
                 }
 
                 node2 = node2.next;
