@@ -27,5 +27,19 @@ namespace Problems.Tests
             ArrayProblem.NextPermutation(nums);
             Assert.AreEqual(nums, new[] {2, 1, 3});
         }
+
+        [Test]
+        public void SearchInRotatedSortedArrayTest1()
+        {
+            var result = ArrayProblem.Search(new[] {4, 5, 6, 7, 0, 1, 2}, 0);
+            Assert.AreEqual(result, 4);
+        }
+
+        [Test]
+        public void SearchInRotatedSortedArrayTest2()
+        {
+            var result = ArrayProblem.Search(new[] {5, 1, 3}, 1);
+            Assert.AreEqual(result, 1);
+        }
     }
 }
