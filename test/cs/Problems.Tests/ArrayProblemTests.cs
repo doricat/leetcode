@@ -41,5 +41,12 @@ namespace Problems.Tests
             var result = ArrayProblem.Search(new[] {5, 1, 3}, 1);
             Assert.AreEqual(result, 1);
         }
+
+        [Test]
+        public void SearchInRotatedSortedArray2Test1()
+        {
+            var result = ArrayProblem.Search2(new[] { 2, 5, 6, 0, 0, 1, 2 }, 3);
+            Assert.AreEqual(result, false);
+        }
     }
 }
