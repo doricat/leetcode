@@ -32,5 +32,12 @@ namespace Problems.Tests
             var result = UniquePathsProblem.UniquePathsWithObstacles(new[,] {{1, 0}});
             Assert.AreEqual(result, 0);
         }
+
+        [Test]
+        public void MinPathSumTest1()
+        {
+            var result = UniquePathsProblem.MinPathSum(new[,] {{1, 3, 1}, {1, 5, 1}, {4, 2, 1}});
+            Assert.AreEqual(result, 7);
+        }
     }
 }
