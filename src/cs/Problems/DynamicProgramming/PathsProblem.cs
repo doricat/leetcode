@@ -2,7 +2,7 @@
 
 namespace Problems.DynamicProgramming
 {
-    public class UniquePathsProblem
+    public class PathsProblem
     {
         // https://leetcode.com/problems/unique-paths/
         public static int UniquePaths(int m, int n)
