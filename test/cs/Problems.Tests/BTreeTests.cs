@@ -18,5 +18,20 @@ namespace Problems.Tests
             });
             Assert.AreEqual(result.ToArray(), new[] {1, 3, 2});
         }
+
+        [Test]
+        public void LevelOrderTest1()
+        {
+            var result = BTree.LevelOrder(new TreeNode(3)
+            {
+                left = new TreeNode(9),
+                right = new TreeNode(20)
+                {
+                    left = new TreeNode(15),
+                    right = new TreeNode(7)
+                }
+            });
+            Assert.AreEqual(result.SelectMany(x => x.Select(y => y)), new[] {3, 9, 20, 15, 7});
+        }
     }
 }
