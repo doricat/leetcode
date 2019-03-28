@@ -48,5 +48,11 @@ namespace Problems.Tests
             });
             Assert.AreEqual(result.SelectMany(x => x.Select(y => y)), new[] {3, 20, 9, 15, 7});
         }
+
+        [Test]
+        public void BuildTreeTest1()
+        {
+            var result = BTree.BuildTree(new [] { 3, 9, 20, 15, 7 }, new [] { 9, 3, 15, 20, 7 });
+        }
     }
 }

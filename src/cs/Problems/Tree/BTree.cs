@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Problems.Tree
 {
@@ -74,12 +75,35 @@ namespace Problems.Tree
                 }
                 else
                 {
-                    list.Add(new List<int> { node.val });
+                    list.Add(new List<int> {node.val});
                 }
 
                 ZigzagLevelOrder(node.left, list, depth + 1);
                 ZigzagLevelOrder(node.right, list, depth + 1);
             }
+        }
+
+        // https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal
+        public static TreeNode BuildTree(int[] preorder, int[] inorder)
+        {
+            if (preorder.Length == 0)
+            {
+                return null;
+            }
+
+            var rootValue = preorder[0];
+            var lIn = inorder.Skip(0).Take(Array.IndexOf(inorder, rootValue)).ToArray();
+            var lPre = preorder.Skip(1).Take(lIn.Length).ToArray();
+
+            var rIn = inorder.Skip(lIn.Length + 1).ToArray();
+            var rPre = preorder.Skip(lIn.Length + 1).ToArray();
+
+            var root = new TreeNode(preorder[0])
+            {
+                left = BuildTree(lPre, lIn),
+                right = BuildTree(rPre, rIn)
+            };
+            return root;
         }
     }
 
