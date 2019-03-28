@@ -48,6 +48,39 @@ namespace Problems.Tree
                 LevelOrderTraversal(node.right, list, depth + 1);
             }
         }
+
+        // https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal
+        public static IList<IList<int>> ZigzagLevelOrder(TreeNode root)
+        {
+            var result = new List<IList<int>>();
+            ZigzagLevelOrder(root, result, 0);
+            return result;
+        }
+
+        private static void ZigzagLevelOrder(TreeNode node, IList<IList<int>> list, int depth)
+        {
+            if (node != null)
+            {
+                if (list.Count > depth)
+                {
+                    if (depth % 2 == 0)
+                    {
+                        list[depth].Add(node.val);
+                    }
+                    else
+                    {
+                        list[depth].Insert(0, node.val);
+                    }
+                }
+                else
+                {
+                    list.Add(new List<int> { node.val });
+                }
+
+                ZigzagLevelOrder(node.left, list, depth + 1);
+                ZigzagLevelOrder(node.right, list, depth + 1);
+            }
+        }
     }
 
     public class TreeNode

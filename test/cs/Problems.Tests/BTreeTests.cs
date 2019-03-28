@@ -33,5 +33,20 @@ namespace Problems.Tests
             });
             Assert.AreEqual(result.SelectMany(x => x.Select(y => y)), new[] {3, 9, 20, 15, 7});
         }
+
+        [Test]
+        public void ZigzagLevelOrderTest1()
+        {
+            var result = BTree.ZigzagLevelOrder(new TreeNode(3)
+            {
+                left = new TreeNode(9),
+                right = new TreeNode(20)
+                {
+                    left = new TreeNode(15),
+                    right = new TreeNode(7)
+                }
+            });
+            Assert.AreEqual(result.SelectMany(x => x.Select(y => y)), new[] {3, 20, 9, 15, 7});
+        }
     }
 }
