@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using NUnit.Framework;
 using Problems.Tree;
 
@@ -52,7 +53,51 @@ namespace Problems.Tests
         [Test]
         public void BuildTreeTest1()
         {
-            var result = BTree.BuildTree(new [] { 3, 9, 20, 15, 7 }, new [] { 9, 3, 15, 20, 7 });
+            var result = BTree.BuildTree(new[] {3, 9, 20, 15, 7}, new[] {9, 3, 15, 20, 7});
+        }
+
+        [Test]
+        public void PathSumTest1()
+        {
+            var result = BTree.PathSum(new TreeNode(5)
+            {
+                left = new TreeNode(4)
+                {
+                    left = new TreeNode(11)
+                    {
+                        left = new TreeNode(7),
+                        right = new TreeNode(2)
+                    }
+                },
+                right = new TreeNode(8)
+                {
+                    left = new TreeNode(13),
+                    right = new TreeNode(4)
+                    {
+                        left = new TreeNode(5),
+                        right = new TreeNode(1)
+                    }
+                }
+            }, 22);
+
+            Assert.AreEqual(result, new List<IList<int>>
+            {
+                new List<int> {5, 4, 11, 2},
+                new List<int> {5, 8, 4, 5}
+            });
+        }[Test]
+        public void PathSumTest2()
+        {
+            var result = BTree.PathSum(new TreeNode(1)
+            {
+                left = new TreeNode(2)
+            }, 1);
+
+            Assert.AreEqual(result, new List<IList<int>>
+            {
+                new List<int> {5, 4, 11, 2},
+                new List<int> {5, 8, 4, 5}
+            });
         }
     }
 }

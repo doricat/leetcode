@@ -105,6 +105,31 @@ namespace Problems.Tree
             };
             return root;
         }
+
+        // https://leetcode.com/problems/path-sum-ii
+        public static IList<IList<int>> PathSum(TreeNode root, int sum)
+        {
+            var result = new List<IList<int>>();
+            var list = new List<int>();
+            PathSum(root, sum, list, result);
+            return result;
+        }
+
+        private static void PathSum(TreeNode node, int sum, IList<int> list, IList<IList<int>> result)
+        {
+            if (node != null)
+            {
+                list.Add(node.val);
+                PathSum(node.left, sum, list, result);
+                if (node.right == null && node.left == null && list.Sum() == sum)
+                {
+                    result.Add(list.Select(x => x).ToList());
+                }
+
+                PathSum(node.right, sum, list, result);
+                list.RemoveAt(list.Count - 1);
+            }
+        }
     }
 
     public class TreeNode
