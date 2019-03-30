@@ -130,6 +130,38 @@ namespace Problems.Tree
                 list.RemoveAt(list.Count - 1);
             }
         }
+
+        // https://leetcode.com/problems/flatten-binary-tree-to-linked-list
+        public static void Flatten(TreeNode root)
+        {
+            if (root == null)
+            {
+                return;
+            }
+
+            var stack = new Stack<TreeNode>();
+            stack.Push(root);
+            var node = new TreeNode(0);
+
+            while (stack.Any())
+            {
+                var n = stack.Pop();
+                node.right = n;
+                node = n;
+
+                if (node.right != null)
+                {
+                    stack.Push(n.right);
+                    n.right = null;
+                }
+
+                if (node.left != null)
+                {
+                    stack.Push(n.left);
+                    n.left = null;
+                }
+            }
+        }
     }
 
     public class TreeNode
@@ -141,6 +173,20 @@ namespace Problems.Tree
         public TreeNode(int x)
         {
             val = x;
+        }
+
+        public override string ToString()
+        {
+            return $"val={val}, left_val={left?.val}, right_val={right?.val}";
+        }
+
+        public static TreeNode Parse(int[] array)
+        {
+            foreach (var i in array)
+            {
+            }
+
+            throw new NotImplementedException();
         }
     }
 }

@@ -85,7 +85,9 @@ namespace Problems.Tests
                 new List<int> {5, 4, 11, 2},
                 new List<int> {5, 8, 4, 5}
             });
-        }[Test]
+        }
+
+        [Test]
         public void PathSumTest2()
         {
             var result = BTree.PathSum(new TreeNode(1)
@@ -93,11 +95,25 @@ namespace Problems.Tests
                 left = new TreeNode(2)
             }, 1);
 
-            Assert.AreEqual(result, new List<IList<int>>
+            Assert.AreEqual(result.Count, 0);
+        }
+
+        [Test]
+        public void FlattenTest1()
+        {
+            var tree = new TreeNode(1)
             {
-                new List<int> {5, 4, 11, 2},
-                new List<int> {5, 8, 4, 5}
-            });
+                left = new TreeNode(2)
+                {
+                    left = new TreeNode(3),
+                    right = new TreeNode(4)
+                },
+                right = new TreeNode(5)
+                {
+                    right = new TreeNode(6)
+                }
+            };
+            BTree.Flatten(tree);
         }
     }
 }
