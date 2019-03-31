@@ -162,6 +162,40 @@ namespace Problems.Tree
                 }
             }
         }
+
+        // https://leetcode.com/problems/populating-next-right-pointers-in-each-node
+        public static Node Connect(Node root)
+        {
+            var list = new List<IList<Node>>();
+            Connect(root, list, 0);
+            foreach (var nodes in list)
+            {
+                for (var i = 0; i < nodes.Count - 1; i++)
+                {
+                    nodes[i].next = nodes[i + 1];
+                }
+            }
+
+            return root;
+        }
+
+        private static void Connect(Node node, IList<IList<Node>> list, int depth)
+        {
+            if (node != null)
+            {
+                if (list.Count > depth)
+                {
+                    list[depth].Add(node);
+                }
+                else
+                {
+                    list.Add(new List<Node> {node});
+                }
+
+                Connect(node.left, list, depth + 1);
+                Connect(node.right, list, depth + 1);
+            }
+        }
     }
 
     public class TreeNode
@@ -187,6 +221,19 @@ namespace Problems.Tree
             }
 
             throw new NotImplementedException();
+        }
+    }
+
+    public class Node
+    {
+        public int val;
+        public Node left;
+        public Node right;
+        public Node next;
+
+        public Node(int x)
+        {
+            val = x;
         }
     }
 }
