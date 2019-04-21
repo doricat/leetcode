@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace Problems
+﻿namespace Problems
 {
     public partial class Solution
     {
@@ -44,30 +42,6 @@ namespace Problems
             }
 
             return result;
-        }
-
-        public class ListNode
-        {
-            public int val;
-            public ListNode next;
-
-            public ListNode(int x)
-            {
-                val = x;
-            }
-
-            public int[] ToNums()
-            {
-                var result = new List<int>();
-                var node = this;
-                while (node != null)
-                {
-                    result.Add(node.val);
-                    node = node.next;
-                }
-
-                return result.ToArray();
-            }
         }
     }
 }
